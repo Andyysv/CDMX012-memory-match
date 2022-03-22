@@ -1,5 +1,6 @@
 import App from './components/App.js';
 import pokemones from './data/pokemon/pokemon.js';
+
 document.getElementById('root').appendChild(App());
 
 console.log(pokemones.items);
@@ -44,7 +45,7 @@ mix ([pokemon3]);*/
     const cardData = getData ();
 
 }*/
-const section = document.querySelector("section");
+/*const section = document.querySelector("section");
 //Función de las cartas
 const pokemonCard = () => {
     const cardData = mix();
@@ -65,4 +66,11 @@ cardData.forEach((item) => {
 
 });
 }; 
-pokemonCard();
+inner.HTML= pokemonCard();*/
+export let showCards = "";
+for (let index = 0; index < 18; index++) {
+  const print = document.getElementById("pokemonAllCards");
+  showCards += `<img id="image" src = "${mix[index].image}"> `;
+
+  print.innerHTML = showCards;
+}
