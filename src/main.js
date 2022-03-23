@@ -1,8 +1,6 @@
 import App from './components/App.js';
 import pokemones from './data/pokemon/pokemon.js';
 
-document.getElementById('root').appendChild(App());
-
 console.log(pokemones.items);
 
 //Duplicado de data
@@ -69,8 +67,10 @@ cardData.forEach((item) => {
 inner.HTML= pokemonCard();*/
 export let showCards = "";
 for (let index = 0; index < 18; index++) {
-  const print = document.getElementById("pokemonAllCards");
-  showCards += `<img id="image" src = "${mix[index].image}"> `;
+  const print = document.getElementById("marginNeon");
+  showCards += ` <section class="cardPrueba esconder">
+  <img id="image" src = "${mix[index].image}"> 
+</section> `;
 
   print.innerHTML = showCards;
 }

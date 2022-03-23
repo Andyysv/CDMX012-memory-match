@@ -1,6 +1,6 @@
 /* selecciona el elemento raíz de un árbol que representa el documento (pendiente de otra definición) */
 :root {
-  --clr-margin: hsl ( 227,  228%,  229% );
+  --clr-water: hsl(166, 89%, 52%);
 }
 
 body {
@@ -12,11 +12,16 @@ body {
 }
 
 #marginNeon {
+  margin-top: 1%;
+  margin-left: 10%;
   padding: 100px;
   border-radius: 40px;
   background-color: transparent;
-  border: var(--clr-margin) 2px solid;
-  box-shadow: inset 0 0 3em 0 var(--clr-margin), 0 0 3em 0 var(--clr-margin);
+  border: var(--clr-water) 2px solid;
+  box-shadow: inset 0 0 3em 0 var(--clr-water), 0 0 3em 0 var(--clr-water);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .principal {
@@ -27,14 +32,52 @@ display: flex;
 }
 
 .pokemonAllCards {
-position: relative;
+position: absolute;
 display: flex;
-flex-wrap: wrap;
 width: 100%;
 height: 100%;
-margin: 20px;
+margin: 50px;
 border-radius:10px;
-background: #501c5d;
+background: transparent;
 }
 
+.memoryMatch {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.buttonBar{
+  margin-left: 10%;
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  margin: 30px;
+  font-size: 16px;
+  border-radius: 4px;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  width: 120px;
+  height: 55px;
+  text-align: center;
+}
+
+.button:hover {
+  display: flex;
+  margin: 30px;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #501c5d;
+  color: white;
+  width: 120px;
+  height: 55px;
+  text-align: center;
+}
+
+.cardPrueba{
+  width: 120px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 25px;
+}
