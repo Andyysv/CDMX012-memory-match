@@ -3,7 +3,12 @@
   --clr-water: hsl(166, 89%, 52%);
 }
 
+*{
+  transition: all 0.5s; 
+}
+
 body {
+  -webkit-perspective: 1000; /*rota en 3D*/
   background-image: url(../MM/fondo.jpg);
   background-repeat: no-repeat;
   background-size: cover;   
@@ -39,11 +44,17 @@ height: 100%;
 margin: 50px;
 border-radius:10px;
 background: transparent;
+justify-content: center;
+align-items: center;
+text-align: center;
 }
 
 .memoryMatch {
-  display: flex;
-  flex-wrap: wrap;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+text-align: center;
 }
 
 .buttonBar{
@@ -76,8 +87,33 @@ background: transparent;
 }
 
 .cardPrueba{
-  width: 120px;
-  height: 150px;
+  width: 130px;
+  height: 190px;
   background-color: #fff;
   border-radius: 25px;
+  margin: 27px;
+  transform-style: preserve-3d;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+.memoryMatch:hover .cardPrueba{
+transform: rotateY(180deg);
+}
+
+.face{
+position: absolute;
+backface-visibility: hidden;
+}
+
+.back{
+  transform: rotateY(180deg);
+}
+
+.backCard{
+  width: 130px;
+  height: 190px;
+  background-color: #fff;
+  border-radius: 25px;
+  margin: 27px;
 }

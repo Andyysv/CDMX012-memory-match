@@ -70,6 +70,7 @@ for (let index = 0; index < 18; index++) {
   const print = document.getElementById("marginNeon");
   showCards += ` <section class="cardPrueba esconder">
   <img id="image" src = "${mix[index].image}"> 
+  <div class= "back"> <img id=${index} src = "${"../MM/back.png"}" class=imagenBack> </div>
 </section> `;
 
   print.innerHTML = showCards;
