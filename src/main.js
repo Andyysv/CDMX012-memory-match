@@ -1,5 +1,5 @@
-import App from './components/App.js';
-import pokemones from './data/pokemon/pokemon.js';
+import App from "./components/App.js";
+import pokemones from "./data/pokemon/pokemon.js";
 
 console.log(pokemones.items);
 
@@ -8,13 +8,12 @@ const pokemon1 = pokemones.items.slice();
 const pokemon2 = pokemones.items.slice();
 
 const pokemon3 = pokemon1.concat(pokemon2);
-console.log(pokemon3); 
-
-
+console.log(pokemon3);
 
 //Mezcla de cartas (fisher yates)
-const mix = pokemon3.sort(() => { //ordena los elementos de un arreglo (array) localmente y devuelve el arreglo ordenado. La ordenación no es necesariamente estable. El modo de ordenación por defecto responde a la posición del valor del string de acuerdo a su valor Unicode
-    return Math.random() - 0.5; //Math. random() retorna un punto flotante, un número pseudo-aleatorio dentro del rango [0, 1). Esto es, desde el 0 (Incluido) hasta el 1 pero sin incluirlo (excluido), el cual se puede escalar hasta el rango deseado. random() devuelve un número aleatorio entre 0.0 y 1.0, excluido este último valor
+const mix = pokemon3.sort(() => {
+  //ordena los elementos de un arreglo (array) localmente y devuelve el arreglo ordenado. La ordenación no es necesariamente estable. El modo de ordenación por defecto responde a la posición del valor del string de acuerdo a su valor Unicode
+  return Math.random() - 0.5; //Math. random() retorna un punto flotante, un número pseudo-aleatorio dentro del rango [0, 1). Esto es, desde el 0 (Incluido) hasta el 1 pero sin incluirlo (excluido), el cual se puede escalar hasta el rango deseado. random() devuelve un número aleatorio entre 0.0 y 1.0, excluido este último valor
 });
 /*function fisherYatesShuffle(pokemon3){
     for(let i =pokemon3.length-1 ; i>0 ;i--){
@@ -27,7 +26,6 @@ fisherYatesShuffle(tmpArray);
 console.log(tmpArray);*/
 //var tmpArray = [1, 3, 5];
 //fisherYatesShuffle(tmpArray);
-
 
 /*function mix () { 
     for (let i= pokemon3.length -1; i>0; i--){
@@ -68,10 +66,17 @@ inner.HTML= pokemonCard();*/
 export let showCards = "";
 for (let index = 0; index < 18; index++) {
   const print = document.getElementById("marginNeon");
-  showCards += ` <section class="cardPrueba esconder">
-  <img id="image" src = "${mix[index].image}"> 
-  <div class= "back"> <img id=${index} src = "${"../MM/back.png"}" class=imagenBack> </div>
+  showCards += ` <section class="cardPrueba hidden">
+<img id="image" src = "${mix[index].image}"> 
+<img id=${index} src = "${"../MM/back.png"}" class=imagenBack>
+</div>
 </section> `;
 
   print.innerHTML = showCards;
 }
+
+const showPokemon = document.getElementById("hidden");
+showPokemon.addEventListener("click", () => {
+  document.getElementById("cardPrueba").style.display = "none";
+  document.getElementById("cardPrueba").style.display = "block";
+});
