@@ -81,16 +81,31 @@ const mix = pokemon3.sort(() => {
 });
 
 //mostrar data en pantalla + carta de frente y atrás por medio de interpolación de variables
+/*const print = document.getElementById("marginNeon");
+mix.forEach((unoporuno, index)=>{
+  
+  const section = document.createElement('section');
+  section.textContent='YA es viernes'
+  section.id=index
+  section.classList= 'detras'
+  section.addEventListener('click', ()=>{
+    section.classList.remove("detras")
+  section.classList='cara'
+  })
+  print.appendChild(section)
+})*/
+
+
 export let showCards = "";
 for (let index = 0; index < 18; index++) {
   const print = document.getElementById("marginNeon");
   showCards += `
-  <section class="carta-box" onclick="selectCard(${index})">
+  <section class="carta-box">
   <section class="carta" id="carta${index}">    
-    <section class="cara">
+    <section class="cara cardCyD">
       <img src="${"../MM/back.png"}">
     </section>
-    <section class="cara detras" id="cara detras${index}">
+    <section class="cara detras cardCyD" id="cara detras${index}">
       <img src="${mix[index].image}"> <h3> ${mix[index].id} </h3> 
     </section>    
   </section>
@@ -99,15 +114,17 @@ for (let index = 0; index < 18; index++) {
   print.innerHTML = showCards;
 }
 
-//funcion para segun ocultar cartas
-/*const showPokemon = document.getElementById("front");
-showPokemon.addEventListener("click", () => {
-  document.getElementById("cardPrueba").style.display = "none";
-  document.getElementById("cardPrueba").style.display = "block";
-});*/
 
+//funcion para voltear la tarjeta con un click
+const card= document.getElementsByClassName("carta");
+for(let i = 0; i < card.length; i++){
+  card[i].addEventListener( 'click', function() {
+  card[i].classList.toggle('is-flipped');
+});
+}
+//La función toogle actúa como un interruptor, de manera que acepta dos parámetros, que serán dos funciones, una para cuando actives el interruptor y otra para cuando lo desactives
 
-let selections = [];
+/*let selections = [];
 //Para que puedas dar click sobre la tarjeta
 function selectCard(index) {
   let carta = document.getElementById("carta" + index)
@@ -120,6 +137,9 @@ function selectCard(index) {
       selections = [];
   }
 }
+console.log(selectCard)
+
+//El método push() añade uno o más elementos al final de un array y devuelve la nueva longitud del array.
 
 //Para que se queden las que coinciden
 function deselect(selections) {
@@ -136,4 +156,4 @@ function deselect(selections) {
           trasera2.style.background = "plum"
       }
   }, 1000);
-}
+}*/

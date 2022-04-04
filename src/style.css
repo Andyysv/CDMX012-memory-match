@@ -117,6 +117,10 @@ text-align: center;
   transition: all 1s linear;
 }
 
+.carta.is-flipped {
+  transform: rotateY(180deg);
+}
+
 .cara {
   cursor: pointer;
   position: absolute;
