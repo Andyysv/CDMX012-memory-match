@@ -69,7 +69,7 @@ body {
 #marginNeon {
   margin-top: 1%;
   margin-left: 10%;
-  padding: 100px;
+  padding: 50px;
   border-radius: 40px;
   background-color: transparent;
   border: var(--clr-water) 2px solid;
@@ -98,8 +98,9 @@ text-align: center;
   cursor: pointer;
   width: var(--w);
   height: var(--h);
-  width: 200px;
+  width: 140px;
   height: 250px;
+  margin: 30px;
   position: relative;
   perspective: 1000px;
   animation: inciar 5s;
@@ -115,6 +116,7 @@ text-align: center;
   min-width: 100px;
   transform-style: preserve-3d;
   transition: all 1s linear;
+  
 }
 
 .carta.is-flipped {
@@ -134,8 +136,8 @@ text-align: center;
   transform: rotateY(180deg);
   background-color: #fff;
   border-radius:30px;
-  width: 200px;
-  height: 240px;
+  width: 140px;
+  height: 250px;
 }
 
 @keyframes iniciar {
