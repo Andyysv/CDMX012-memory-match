@@ -103,14 +103,14 @@ for (let index = 0; index < 18; index++) {
   const print = document.getElementById("marginNeon");
   showCards += `
   <section class="carta-box">
-  <section class="carta" id="carta${index}">    
-    <section class="cara cardCyD">
+  <div id="carta${index}" class="carta" >    
+    <div class="cara adelante">
       <img src="${"../MM/back.png"}">
-    </section>
-    <section class="cara detras cardCyD" id="${index}">
+    </div>
+    <div id="${index}" class="cara detras">
       <img src="${mix[index].image}"> <h3> ${mix[index].id} </h3> 
-    </section>    
-  </section>
+    </div>    
+  </div>
 </section>
   `;
   print.innerHTML = showCards;
@@ -119,10 +119,57 @@ for (let index = 0; index < 18; index++) {
 
 //funcion para voltear la tarjeta con un click
 const card= document.getElementsByClassName("carta");
-for(let index = 0; index < card.length; index++){
-  card[index].addEventListener( 'click', function() {
-  card[index].classList.toggle('is-flipped');
-});
+// for(let index = 0; index < card.length; index++){
+//   card[index].addEventListener( 'click', function() {
+//   card[index].classList.toggle('is-flipped');
+// });
+// }
+for (const cartas of card) {
+  cartas.addEventListener('click',function (){
+contadorDeTarjetas++;
+console.log(contadorDeTarjetas);
+if (contadorDeTarjetas ==1){ //== igualdad
+  cartas.classList.toggle("is-flipped");
+  savePokemon = document.getElementById(cartas.firstElementChild.id); //firstElementChild: viene toda la información almacenada
+  compararInfoDeId1= cartas.firstElementChild.innerText;
+ //innerText es donde la información que se va a comparar pero en general todo lo que contiene la carta
+  compararInfoDeId1= true;
+} else {
+if (contadorDeTarjetas==2){
+  cartas.classList.toggle("is-flipped");
+  savePokemon2 = document.getElementById(cartas.firstElementChild.id);
+  compararInfoDeId2= cartas.firstElementChild.innerText;
+  compararInfoDeId2= true; //compara que hagan el match
+  
+
+
+  if (compararInfoDeId1===compararInfoDeId2){
+  contadorDeTarjetas= 0;
+  } else {
+
+    setTimeout(() => {
+      compararInfoDeId1.parentNode.classList.remove("is-flipped");  
+      compararInfoDeId2.parentNode.classList.remove("is-flipped");
+    }, 1000);
+
+
+
+
+
+  savePokemon.disabled= false;
+  savePokemon2.disabled= false;
+  eventFire (compararInfoDeId1,'click');
+  eventFire (compararInfoDeId2,'click');
+  
+  
+
+  contadorDeTarjetas= 0;
+
+  }
+} 
+
+}
+  })
 }
 //La función toogle actúa como un interruptor, de manera que acepta dos parámetros, que serán dos funciones, una para cuando actives el interruptor y otra para cuando lo desactives
 
@@ -211,17 +258,48 @@ function deselect(selections) {
       }
   }, 1000);
 }*/
+/*let score = document.getElementById("score");
+let flips= 0;*/
 
-let uncoveredCards= 0;
 
-let movements = document.getElementById("movements");
-let score = document.getElementById("score");
+//Variables principales de las tarjetas de click 
+let contadorDeTarjetas= 0;
+let savePokemon= null;
+let savePokemon2= null;
+let compararInfoDeId1 = null;
+let compararInfoDeId2 = null;
 
-function uncover (index){
-  for(let index = 0; index < card.length; index++){
+
+
+//Savepokemon para guardar la información de la primera carta a la que le diste click
+
+// let selectCard= document.getElementsByClassName("cara");
+// console.log(document.getElementsByClassName("is-flipped"))
+//manipulación de cartas
+
+console.log(compararInfoDeId1)
+console.log(compararInfoDeId2)
+//funcion para voltear sino son iguales despues del click
+function eventFire(el, etype){
+  if (el.fireEvent) {
+    el.fireEvent("on" + etype);
+  } else {
+    var evObj = document.createEvent("Events");
+    evObj.initEvent(etype, true, false);
+    el.dispatchEvent(evObj);
+  }
+}
+
+
+
+
+/*let movements = document.getElementById("movements");
+  for(let index = 0; index < card.length; index++) function uncover (index){
     card[index].addEventListener( 'click', function(){
 uncoveredCards++;
-console.log(uncoveredCards);
+if (uncoveredCards==1){
+  card.classList.toggle("is-flipped");
+}
+
     });
-}
-}
+*/
