@@ -126,30 +126,34 @@ const card= document.getElementsByClassName("carta");
 // }
 for (const cartas of card) {
   cartas.addEventListener('click',function (){
-contadorDeTarjetas++;
-console.log(contadorDeTarjetas);
-if (contadorDeTarjetas ==1){ //== igualdad
-  cartas.classList.toggle("is-flipped");
-  savePokemon = document.getElementById(cartas.firstElementChild.id); //firstElementChild: viene toda la información almacenada
-  compararInfoDeId1= cartas.firstElementChild.innerText;
- //innerText es donde la información que se va a comparar pero en general todo lo que contiene la carta
-  compararInfoDeId1= true;
-} else {
-if (contadorDeTarjetas==2){
-  cartas.classList.toggle("is-flipped");
-  savePokemon2 = document.getElementById(cartas.firstElementChild.id);
-  compararInfoDeId2= cartas.firstElementChild.innerText;
-  compararInfoDeId2= true; //compara que hagan el match
+  contadorDeTarjetas++;
+
+  console.log({contadorDeTarjetas});
+  if (contadorDeTarjetas ==1){ //== igualdad
+    cartas.classList.toggle("is-flipped");
+    savePokemon = cartas; //firstElementChild: viene toda la información almacenada
+    idCardOne= cartas.innerText;
+    console.log({idCardOne})
+  //innerText es donde la información que se va a comparar pero en general todo lo que contiene la carta
+    //compararInfoDeId1= true;
+  } else {
+  if (contadorDeTarjetas==2){
+    cartas.classList.toggle("is-flipped");
+    savePokemon2 = cartas;
+    idCardTwo= cartas.innerText;
+    //compararInfoDeId2= true; //compara que hagan el match
   
 
 
-  if (compararInfoDeId1===compararInfoDeId2){
-  contadorDeTarjetas= 0;
+  if (idCardOne===idCardTwo){
+    console.log("son iguales")
+    //Aqui entra cuando las cartas son iguales
+    //
   } else {
-
+    //Aqui entra cuando las cartas no son iguales
     setTimeout(() => {
-      compararInfoDeId1.parentNode.classList.remove("is-flipped");  
-      compararInfoDeId2.parentNode.classList.remove("is-flipped");
+      savePokemon.parentNode.classList.remove("is-flipped");  
+      savePokemon2.parentNode.classList.remove("is-flipped");
     }, 1000);
 
 
@@ -266,8 +270,8 @@ let flips= 0;*/
 let contadorDeTarjetas= 0;
 let savePokemon= null;
 let savePokemon2= null;
-let compararInfoDeId1 = null;
-let compararInfoDeId2 = null;
+let idCardOne = null;
+let idCardTwo = null;
 
 
 
@@ -277,8 +281,6 @@ let compararInfoDeId2 = null;
 // console.log(document.getElementsByClassName("is-flipped"))
 //manipulación de cartas
 
-console.log(compararInfoDeId1)
-console.log(compararInfoDeId2)
 //funcion para voltear sino son iguales despues del click
 function eventFire(el, etype){
   if (el.fireEvent) {
