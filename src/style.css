@@ -140,6 +140,23 @@ text-align: center;
   height: 250px;
 }
 
+.credits {
+  text-align: center;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bolder;
+  padding-top: 1em;
+}
+
+.footerCredits {
+  color: #fff;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+
 @keyframes iniciar {
 
   20%,
