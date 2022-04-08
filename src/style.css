@@ -93,7 +93,6 @@ body {
 
 #marginNeon {
   margin-top: 1%;
-  margin-left: 10%;
   padding: 50px;
   border-radius: 40px;
   background-color: transparent;
@@ -123,10 +122,6 @@ text-align: center;
   perspective: 1000px;
   animation: inciar 5s;
 }
-
-/*.carta-box:hover .carta {
-    transform: rotateY(180deg);
-}*/
 
 .carta {
   animation: iniciar 5s;
@@ -171,9 +166,8 @@ transform: scale(1.05);
 
 audio
 {
-background: url(../MM/kawaii.jpg);
 margin-top: 15px;
-margin-left: 170px; 
+margin-left: 80px; 
 display: flex;
 -webkit-transition:all 0.5s linear;
 -moz-transition:all 0.5s linear;
@@ -221,8 +215,5 @@ footer {
   .carta-box{
     width: 20%;
     margin:15%;
-  }
-  .detras{
-    margin-left: 0%;
   }
 }

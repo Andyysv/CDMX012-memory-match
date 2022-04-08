@@ -54,12 +54,8 @@ for (let index = 0; index < 18; index++) {
 
 //funcion para voltear la tarjeta con un click
 const card= document.getElementsByClassName("carta");
-// for(let index = 0; index < card.length; index++){
-//   card[index].addEventListener( 'click', function() {
-//   card[index].classList.toggle('is-flipped');
-// });
-// }
 
+//Función del tiempo
 let timerTime=  80;
 let countdownTime = null;
 let initialTimerTime= 80;
