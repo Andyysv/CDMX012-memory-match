@@ -3,6 +3,23 @@ import pokemones from "./data/pokemon/pokemon.js";
 
 console.log(pokemones.items);
 
+
+//Variables principales de las tarjetas de click 
+let contadorDeTarjetas= 0;
+let savePokemon= null;
+let savePokemon2= null;
+let idCardOne = null;
+let idCardTwo = null;
+
+//OTRO VIDEO
+let movements= 0;
+let score= 0;
+let showMovements= document.getElementById("movements");
+let showHits= document.getElementById("score");
+let tempo= false;
+
+
+
 /*let uncoveredCards= 0;
 let target1= null;
 let target2= null;
@@ -124,16 +141,49 @@ const card= document.getElementsByClassName("carta");
 //   card[index].classList.toggle('is-flipped');
 // });
 // }
+
+let timerTime= 30;
+let countdownTime = null;
+let initialTimerTime= 30;
+let time = document.getElementById("time");
+
+function countTime(){
+countdownTime= setInterval(()=>{
+timerTime--;
+time.innerHTML = `Time: ${timerTime} seconds`
+if(timerTime ==0){
+clearInterval(countdownTime);
+targetBlock()
+}  
+},1000)
+}
+
+//aquí deberían voltearse todas las tarjetas porque el tiempo se termino
+function targetBlock(){
+  for(let i = 0; i <=17; i++){
+    let oneBlockedCard= document.getElementById(i);
+    oneBlockedCard.innerHTML= mix[i];
+    oneBlockedCard.disabled= true;
+  }
+}
+
+
 for (const cartas of card) {
   cartas.addEventListener('click',function (){
-  contadorDeTarjetas++;
 
+    if(tempo == false){
+      countTime();
+    tempo=true;
+    }
+
+  contadorDeTarjetas++;
   console.log({contadorDeTarjetas});
   if (contadorDeTarjetas ==1){ //== igualdad
     cartas.classList.toggle("is-flipped");
     savePokemon = cartas; //firstElementChild: viene toda la información almacenada
     idCardOne= cartas.innerText;
     console.log({idCardOne})
+    
   //innerText es donde la información que se va a comparar pero en general todo lo que contiene la carta
     //compararInfoDeId1= true;
   } else {
@@ -141,40 +191,59 @@ for (const cartas of card) {
     cartas.classList.toggle("is-flipped");
     savePokemon2 = cartas;
     idCardTwo= cartas.innerText;
+    console.log({idCardTwo})
     //compararInfoDeId2= true; //compara que hagan el match
-  
-
+  movements++;
+  showMovements.innerHTML=  `Movements: ${movements} `;
 
   if (idCardOne===idCardTwo){
     console.log("son iguales")
+
+    score++;
+    showHits.innerHTML=  `Hits: ${score} `;
+
+    if (score==9) {
+      clearInterval(initialTimerTime)
+      showHits.innerHTML=  `Hits: ${score} 😈🤘🏻`;
+      time.innerHTML = `That is awesome! You did it in: ${initialTimerTime-timerTime} seconds✨`
+      showMovements.innerHTML=  `Movements: ${movements} 😎🙀🎉`;
+
+    }
     //Aqui entra cuando las cartas son iguales
     //
   } else {
     //Aqui entra cuando las cartas no son iguales
-    setTimeout(() => {
-      savePokemon.parentNode.classList.remove("is-flipped");  
-      savePokemon2.parentNode.classList.remove("is-flipped");
-    }, 1000);
+    if (idCardOne != idCardTwo)
+    setTimeout(() => { savePokemon.classList.toggle("is-flipped"), 
+        savePokemon2.classList.toggle("is-flipped");}, 1300);
+        contadorDeTarjetas = 0;   
+
+    
+      }
+    //setTimeout(() => {
+      //savePokemon.parentNode.classList.toggle("is-flipped");  
+      //savePokemon2.parentNode.classList.toggle("is-flipped");
+    //}, 1000);
 
 
 
 
 
-  savePokemon.disabled= false;
-  savePokemon2.disabled= false;
-  eventFire (compararInfoDeId1,'click');
-  eventFire (compararInfoDeId2,'click');
+  //savePokemon.disabled= false;
+  //savePokemon2.disabled= false;
+  eventFire (idCardOne,'click');
+  eventFire (idCardTwo,'click');
   
   
 
-  contadorDeTarjetas= 0;
+  //contadorDeTarjetas= 0;
 
   }
 } 
 
 }
-  })
-}
+  )}
+
 //La función toogle actúa como un interruptor, de manera que acepta dos parámetros, que serán dos funciones, una para cuando actives el interruptor y otra para cuando lo desactives
 
 /*let selections = [];
@@ -266,15 +335,6 @@ function deselect(selections) {
 let flips= 0;*/
 
 
-//Variables principales de las tarjetas de click 
-let contadorDeTarjetas= 0;
-let savePokemon= null;
-let savePokemon2= null;
-let idCardOne = null;
-let idCardTwo = null;
-
-
-
 //Savepokemon para guardar la información de la primera carta a la que le diste click
 
 // let selectCard= document.getElementsByClassName("cara");
@@ -282,7 +342,7 @@ let idCardTwo = null;
 //manipulación de cartas
 
 //funcion para voltear sino son iguales despues del click
-function eventFire(el, etype){
+ function eventFire(el, etype){
   if (el.fireEvent) {
     el.fireEvent("on" + etype);
   } else {
@@ -305,3 +365,16 @@ if (uncoveredCards==1){
 
     });
 */
+
+/*let timerTime= 30;
+let countdownTime = null;
+
+function countTime(){
+  setInterval(()=>{
+timerTime--;
+time.innerHTML = "Tiempo: ${timerTime} segundos"
+if(timerTime ==0){
+clearInterval(countdownTime);
+}  
+},1000)
+}*/
