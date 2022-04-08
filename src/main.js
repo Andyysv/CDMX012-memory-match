@@ -18,72 +18,6 @@ let showMovements= document.getElementById("movements");
 let showHits= document.getElementById("score");
 let tempo= false;
 
-
-
-/*let uncoveredCards= 0;
-let target1= null;
-let target2= null;
-let firstResult= null;
-let secondResult= null;
-let movements= 0;
-let tempo= false;
-let timerTime= 30;
-let countdownTime = null;
-
-let showMovements= document.getElementById("movements");
-let time = document.getElementById("time");
-
-function countTime(){
-  setInterval(()=>{
-timerTime--;
-time.innerHTML = "Tiempo: ${timerTime} segundos"
-if(timerTime ==0){
-clearInterval(countdownTime);
-}  
-},1000)
-}
-
-//Destapar tarjetas
-function uncover(id){
-  if(tempo == false){
-  countTime();
-tempo=true;
-  }
-  uncoveredCards++;
-  console.log(uncoveredCards);
-
-  if(uncoveredCards ==1){
-target1= document.getElementById(id);
-firstResult= mix[id];
-target1.innerHTML= firstResult;
-target1.disabled=true;
-  }else if(uncoveredCards ==2){
-target2=document.getElementById(id);
-secondResult=mix[id];
-target2.innerHTML= secondResult;
-
-target2.disabled=true;
-
-movements++;
-showMovements.innerHTML=  `Movements": ${movements} `;
-  
-if(firstResult == secondResult){
-  uncoveredCards= 0;
-} else {
-  setTimeout(()=>{
-    target1.innerHTML="";
-    target2.innetHTML= "";
-    target1.disabled= false;
-    target2.disabled= false
-    uncoveredCards =0
-  },2000)
-
-}
-}
-  }*/
-
-
-
 //Duplicado de data
 const pokemon1 = pokemones.items.slice();
 const pokemon2 = pokemones.items.slice();
@@ -99,22 +33,7 @@ const mix = pokemon3.sort(() => {
   return Math.random() - 0.5; //Math. random() retorna un punto flotante, un número pseudo-aleatorio dentro del rango [0, 1). Esto es, desde el 0 (Incluido) hasta el 1 pero sin incluirlo (excluido), el cual se puede escalar hasta el rango deseado. random() devuelve un número aleatorio entre 0.0 y 1.0, excluido este último valor
 });
 
-//mostrar data en pantalla + carta de frente y atrás por medio de interpolación de variables
-/*const print = document.getElementById("marginNeon");
-mix.forEach((unoporuno, index)=>{
-  
-  const section = document.createElement('section');
-  section.textContent='YA es viernes'
-  section.id=index
-  section.classList= 'detras'
-  section.addEventListener('click', ()=>{
-    section.classList.remove("detras")
-  section.classList='cara'
-  })
-  print.appendChild(section)
-})*/
-
-
+//Imprimir data en pantalla y la creación de cartas
 export let showCards = "";
 for (let index = 0; index < 18; index++) {
   const print = document.getElementById("marginNeon");
@@ -133,7 +52,6 @@ for (let index = 0; index < 18; index++) {
   print.innerHTML = showCards;
 }
 
-
 //funcion para voltear la tarjeta con un click
 const card= document.getElementsByClassName("carta");
 // for(let index = 0; index < card.length; index++){
@@ -147,7 +65,7 @@ let countdownTime = null;
 let initialTimerTime= 30;
 let time = document.getElementById("time");
 
-function countTime(){
+export function countTime(){
 countdownTime= setInterval(()=>{
 timerTime--;
 time.innerHTML = `Time: ${timerTime} seconds`
@@ -159,7 +77,7 @@ targetBlock()
 }
 
 //aquí deberían voltearse todas las tarjetas porque el tiempo se termino
-function targetBlock(){
+export function targetBlock(){
   for(let i = 0; i <=17; i++){
     let oneBlockedCard= document.getElementById(i);
     oneBlockedCard.innerHTML= mix[i];
@@ -198,7 +116,7 @@ for (const cartas of card) {
 
   if (idCardOne===idCardTwo){
     console.log("son iguales")
-
+    contadorDeTarjetas = 0; 
     score++;
     showHits.innerHTML=  `Hits: ${score} `;
 
@@ -213,29 +131,18 @@ for (const cartas of card) {
     //
   } else {
     //Aqui entra cuando las cartas no son iguales
-    if (idCardOne != idCardTwo)
+    //if (idCardOne != idCardTwo)
     setTimeout(() => { savePokemon.classList.toggle("is-flipped"), 
         savePokemon2.classList.toggle("is-flipped");}, 1300);
         contadorDeTarjetas = 0;   
 
     
       }
-    //setTimeout(() => {
-      //savePokemon.parentNode.classList.toggle("is-flipped");  
-      //savePokemon2.parentNode.classList.toggle("is-flipped");
-    //}, 1000);
-
-
-
-
-
   //savePokemon.disabled= false;
   //savePokemon2.disabled= false;
-  eventFire (idCardOne,'click');
-  eventFire (idCardTwo,'click');
+  //eventFire (idCardOne,'click');
+  //eventFire (idCardTwo,'click');
   
-  
-
   //contadorDeTarjetas= 0;
 
   }
@@ -342,7 +249,7 @@ let flips= 0;*/
 //manipulación de cartas
 
 //funcion para voltear sino son iguales despues del click
- function eventFire(el, etype){
+ /*function eventFire(el, etype){
   if (el.fireEvent) {
     el.fireEvent("on" + etype);
   } else {
@@ -350,7 +257,7 @@ let flips= 0;*/
     evObj.initEvent(etype, true, false);
     el.dispatchEvent(evObj);
   }
-}
+}*/
 
 
 
@@ -365,16 +272,3 @@ if (uncoveredCards==1){
 
     });
 */
-
-/*let timerTime= 30;
-let countdownTime = null;
-
-function countTime(){
-  setInterval(()=>{
-timerTime--;
-time.innerHTML = "Tiempo: ${timerTime} segundos"
-if(timerTime ==0){
-clearInterval(countdownTime);
-}  
-},1000)
-}*/

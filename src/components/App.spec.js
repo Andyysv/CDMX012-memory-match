@@ -1,8 +1,16 @@
-import App from './App.js';
+import {countTime, targetBlock} from './main.js';
 
-describe('App', () => {
-  it('should render without crashing', () => {
-    const el = App();
-    expect(el instanceof HTMLElement).toBe(true);
+describe("Test del filtrado", () => {
+  test("Comprobar que es una función", () => {
+    expect(typeof countTime).toBe("function")
   });
-});
+
+})
+
+describe("Test del filtrado", () => {
+  test("Comprobar que es una función", () => {
+    expect(typeof targetBlock).toBe("function")
+  });
+
+})
+
