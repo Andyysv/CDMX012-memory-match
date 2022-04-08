@@ -60,28 +60,30 @@ const card= document.getElementsByClassName("carta");
 // });
 // }
 
-let timerTime= 30;
+let timerTime=  80;
 let countdownTime = null;
-let initialTimerTime= 30;
+let initialTimerTime= 80;
 let time = document.getElementById("time");
 
 export function countTime(){
-countdownTime= setInterval(()=>{
-timerTime--;
-time.innerHTML = `Time: ${timerTime} seconds`
-if(timerTime ==0){
-clearInterval(countdownTime);
-targetBlock()
-}  
-},1000)
+  countdownTime= setInterval(()=>{
+  timerTime--;
+  time.innerHTML = `Time: ${timerTime} seconds`
+  if(timerTime ==0){
+    clearInterval(countdownTime);
+    targetBlock()
+  }  
+  },1000)
 }
 
 //aquí deberían voltearse todas las tarjetas porque el tiempo se termino
 export function targetBlock(){
   for(let i = 0; i <=17; i++){
-    let oneBlockedCard= document.getElementById(i);
+    let oneBlockedCard= document.getElementById(`carta${i}`);
+    oneBlockedCard.className = "carta is-flipped";
+    /*let oneBlockedCard= document.getElementById(i);
     oneBlockedCard.innerHTML= mix[i];
-    oneBlockedCard.disabled= true;
+    oneBlockedCard.disabled= true;*/
   }
 }
 
@@ -138,137 +140,9 @@ for (const cartas of card) {
 
     
       }
-  //savePokemon.disabled= false;
-  //savePokemon2.disabled= false;
-  //eventFire (idCardOne,'click');
-  //eventFire (idCardTwo,'click');
-  
-  //contadorDeTarjetas= 0;
-
-  }
-} 
-
+    }
+  } 
 }
-  )}
+)}
 
 //La función toogle actúa como un interruptor, de manera que acepta dos parámetros, que serán dos funciones, una para cuando actives el interruptor y otra para cuando lo desactives
-
-/*let selections = [];
-//Para que puedas dar click sobre la tarjeta
-function selectCard(index) {
-  let carta = document.getElementById("carta" + index)
-  if (carta.style.transform != "rotateY(180deg)") {
-    carta.style.transform = "rotateY(180deg)"
-    selections.push(index);
-  }
-  if (selections.length == 2) {
-    deselect(selections);
-      selections = [];
-  }
-}
-console.log(selectCard)*/
-
-//El método push() añade uno o más elementos al final de un array y devuelve la nueva longitud del array.
-
-//Para que se queden las que coinciden
-/*let selections = [];
-function deselect(selections) {
-  setTimeout(() => {
-      let trasera1 = document.getElementById("cara detras" + selections[0])
-      let trasera2 = document.getElementById("cara detras" + selections[1])
-      if (trasera1.innerHTML != trasera2.innerHTML) {
-          let tarjeta1 = document.getElementById("cara detras" + selections[0])
-          let tarjeta2 = document.getElementById("cara detras" + selections[1])
-          tarjeta1.style.transform = "rotateY(0deg)"
-          tarjeta2.style.transform = "rotateY(0deg)"
-      }else{
-          trasera1.style.background = "plum"
-          trasera2.style.background = "plum"
-      }
-  }, 1000);
-}*/
-
-/*let cardChosenId= []
-
-function checkForMatch(){
-  let cards = document.querySelectorAll("id");
-  const optionOneId= cardChosenId[0];
-  const optionTwoId= cardChosenId[1]
-
-}*/
-
-//Para que veamos si coinciden las cartas
-/*const checkCards = (card) => {
-  const clickedCard= card.target;
-  const flippedCards= document.querySelectorAll(".is-flipped")
-  clickedCard.classList.add("is-flipped");
-
-if (flippedCards.length ===2){
-  if (flippedCards[0].getAttribute("id")===flippedCards[1].getAttribute("id"))
-  }
-}*/
-
-/*let selections = [];
-const card= document.getElementsByClassName("carta");
-for(let index = 0; index < card.length; index++){
-  card[index].addEventListener( 'click', function() {
-  card[index].classList.toggle('is-flipped');
-  selections.push(index);
-});
-if (selections.length == 2) {
-  deselect(selections);
-    selections = [];
-}
-}
-
-//El método push() añade uno o más elementos al final de un array y devuelve la nueva longitud del array.
-
-function deselect(selections) {
-  setTimeout(() => {
-      let trasera1 = document.getElementByClassName("carta" + selections[0])
-      let trasera2 = document.getElementByClassName("carta" + selections[1])
-      if (trasera1.innerHTML != trasera2.innerHTML) {
-          let tarjeta1 = document.getElementByClassName("carta" + selections[0])
-          let tarjeta2 = document.getElementByClassName("carta" + selections[1])
-          tarjeta1.style.transform = "rotateY(0deg)"
-          tarjeta2.style.transform = "rotateY(0deg)"
-      }else{
-          trasera1.style.background = "plum"
-          trasera2.style.background = "plum"
-      }
-  }, 1000);
-}*/
-/*let score = document.getElementById("score");
-let flips= 0;*/
-
-
-//Savepokemon para guardar la información de la primera carta a la que le diste click
-
-// let selectCard= document.getElementsByClassName("cara");
-// console.log(document.getElementsByClassName("is-flipped"))
-//manipulación de cartas
-
-//funcion para voltear sino son iguales despues del click
- /*function eventFire(el, etype){
-  if (el.fireEvent) {
-    el.fireEvent("on" + etype);
-  } else {
-    var evObj = document.createEvent("Events");
-    evObj.initEvent(etype, true, false);
-    el.dispatchEvent(evObj);
-  }
-}*/
-
-
-
-
-/*let movements = document.getElementById("movements");
-  for(let index = 0; index < card.length; index++) function uncover (index){
-    card[index].addEventListener( 'click', function(){
-uncoveredCards++;
-if (uncoveredCards==1){
-  card.classList.toggle("is-flipped");
-}
-
-    });
-*/
