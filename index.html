@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png"
+    href="https://latiendapokemon.com/wp-content/uploads/2020/11/pikachu_disfrazado_dibujo_kawaii_monos_eevee_pokemon.jpg"
+    sizes="32x32">
+  <title>Memory Match</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="principal">
+    <img src="../MM/titulo.png" id="logo">
+  </div>
+  <!-- contenedor principal donde estan los pokemon-->
+  <div class="buttonBar">
+    <input type="button" class="button" value="New Game" onclick="location.reload()" /> </button>
+    <h2 id="score" class="statistics">Hits: 0</h2>
+    <h2 id="time" class:"statistics">Time: 80 seconds</h2>
+    <h2 id="movements" class="statistics">Movements</h2>
+  </div>
+
+  <section class="memoryMatch" id="marginNeon">
+  </section>
+
+  <audio controls autoplay> 
+    <source src="latino.mp3" type="audio/mpeg">
+    <source src="theme.mp3" type="audio/mpeg">
+  </audio>
+
+  <footer>
+    <div class= "credits">
+      Minigame programmed by
+      <a class= "footerCredits" href="https://github.com/Andyysv" target="_blank"
+        rel="noopener noreferrer">
+        Andrea Sánchez</a>
+    </div>
+  </footer>
+
+
+  <script src="main.js" type="module"></script>
+</body>
+
+</html>
