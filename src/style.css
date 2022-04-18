@@ -11,7 +11,7 @@
 
 body {
   -webkit-perspective: 1000; /*rota en 3D*/
-  background-image: url(../MM/fondo.jpg);
+  background-image: url(./MM/fondo.jpg);
   background-repeat: no-repeat;
   background-size: cover;   
   min-height:100%;

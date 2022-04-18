@@ -41,7 +41,7 @@ for (let index = 0; index < 18; index++) {
   <section class="carta-box">
   <div id="carta${index}" class="carta" >    
     <div class="cara adelante">
-      <img src="${"../MM/back.png"}">
+      <img src="${"./MM/back.png"}">
     </div>
     <div id="${index}" class="cara detras">
       <img src="${mix[index].image}"> <h3> ${mix[index].id} </h3> 
