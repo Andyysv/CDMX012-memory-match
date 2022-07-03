@@ -5,18 +5,18 @@ console.log(pokemones.items);
 
 
 //Variables principales de las tarjetas de click 
-let contadorDeTarjetas= 0;
-let savePokemon= null;
-let savePokemon2= null;
+let contadorDeTarjetas = 0;
+let savePokemon = null;
+let savePokemon2 = null;
 let idCardOne = null;
 let idCardTwo = null;
 
 //OTRO VIDEO
-let movements= 0;
-let score= 0;
-let showMovements= document.getElementById("movements");
-let showHits= document.getElementById("score");
-let tempo= false;
+let movements = 0;
+let score = 0;
+let showMovements = document.getElementById("movements");
+let showHits = document.getElementById("score");
+let tempo = false;
 
 //Duplicado de data
 const pokemon1 = pokemones.items.slice();
@@ -53,29 +53,29 @@ for (let index = 0; index < 18; index++) {
 }
 
 //funcion para voltear la tarjeta con un click
-const card= document.getElementsByClassName("carta");
+const card = document.getElementsByClassName("carta");
 
 //Función del tiempo
-let timerTime=  80;
+let timerTime = 80;
 let countdownTime = null;
-let initialTimerTime= 80;
+let initialTimerTime = 80;
 let time = document.getElementById("time");
 
-export function countTime(){
-  countdownTime= setInterval(()=>{
-  timerTime--;
-  time.innerHTML = `Time: ${timerTime} seconds`
-  if(timerTime ==0){
-    clearInterval(countdownTime);
-    targetBlock()
-  }  
-  },1000)
+export function countTime() {
+  countdownTime = setInterval(() => {
+    timerTime--;
+    time.innerHTML = `Time: ${timerTime} seconds`
+    if (timerTime == 0) {
+      clearInterval(countdownTime);
+      targetBlock()
+    }
+  }, 1000)
 }
 
 //aquí deberían voltearse todas las tarjetas porque el tiempo se termino
-export function targetBlock(){
-  for(let i = 0; i <=17; i++){
-    let oneBlockedCard= document.getElementById(`carta${i}`);
+export function targetBlock() {
+  for (let i = 0; i <= 17; i++) {
+    let oneBlockedCard = document.getElementById(`carta${i}`);
     oneBlockedCard.className = "carta is-flipped";
     /*let oneBlockedCard= document.getElementById(i);
     oneBlockedCard.innerHTML= mix[i];
@@ -83,62 +83,65 @@ export function targetBlock(){
   }
 }
 
-
+//for of
 for (const cartas of card) {
-  cartas.addEventListener('click',function (){
+  cartas.addEventListener('click', function () {
 
-    if(tempo == false){
+    if (tempo == false) {
       countTime();
-    tempo=true;
+      tempo = true;
     }
 
-  contadorDeTarjetas++;
-  console.log({contadorDeTarjetas});
-  if (contadorDeTarjetas ==1){ //== igualdad
-    cartas.classList.toggle("is-flipped");
-    savePokemon = cartas; //firstElementChild: viene toda la información almacenada
-    idCardOne= cartas.innerText;
-    console.log({idCardOne})
-    
-  //innerText es donde la información que se va a comparar pero en general todo lo que contiene la carta
-    //compararInfoDeId1= true;
-  } else {
-  if (contadorDeTarjetas==2){
-    cartas.classList.toggle("is-flipped");
-    savePokemon2 = cartas;
-    idCardTwo= cartas.innerText;
-    console.log({idCardTwo})
-    //compararInfoDeId2= true; //compara que hagan el match
-  movements++;
-  showMovements.innerHTML=  `Movements: ${movements} `;
+    contadorDeTarjetas++;
+    console.log({ contadorDeTarjetas });
+    if (contadorDeTarjetas == 1) { //== igualdad
+      cartas.classList.toggle("is-flipped");
+      savePokemon = cartas; //firstElementChild: viene toda la información almacenada
+      idCardOne = cartas.innerText;
+      console.log({ idCardOne })
 
-  if (idCardOne===idCardTwo){
-    console.log("son iguales")
-    contadorDeTarjetas = 0; 
-    score++;
-    showHits.innerHTML=  `Hits: ${score} `;
+      //innerText es donde la información que se va a comparar pero en general todo lo que contiene la carta
+      //compararInfoDeId1= true;
+    } else {
+      if (contadorDeTarjetas == 2) {
+        cartas.classList.toggle("is-flipped");
+        savePokemon2 = cartas;
+        idCardTwo = cartas.innerText;
+        console.log({ idCardTwo })
+        //compararInfoDeId2= true; //compara que hagan el match
+        movements++;
+        showMovements.innerHTML = `Movements: ${movements} `;
 
-    if (score==9) {
-      clearInterval(initialTimerTime)
-      showHits.innerHTML=  `Hits: ${score} 😈🤘🏻`;
-      time.innerHTML = `That is awesome! You did it in: ${initialTimerTime-timerTime} seconds✨`
-      showMovements.innerHTML=  `Movements: ${movements} 😎🙀🎉`;
+        if (idCardOne === idCardTwo) {
+          console.log("son iguales")
+          contadorDeTarjetas = 0;
+          score++;
+          showHits.innerHTML = `Hits: ${score} `;
+        // tiempo donde termina cuando tienes todos los aciertos 
+          if (score === 9) {
+            clearInterval(initialTimerTime)
+            showHits.innerHTML = `Hits: ${score} 😈🤘🏻`;
+            time.innerHTML = `That is awesome! You did it in: ${initialTimerTime - timerTime} seconds✨`
+            showMovements.innerHTML = `Movements: ${movements} 😎🙀🎉`;
 
-    }
-    //Aqui entra cuando las cartas son iguales
-    //
-  } else {
-    //Aqui entra cuando las cartas no son iguales
-    //if (idCardOne != idCardTwo)
-    setTimeout(() => { savePokemon.classList.toggle("is-flipped"), 
-        savePokemon2.classList.toggle("is-flipped");}, 1300);
-        contadorDeTarjetas = 0;   
+          }
+          //Aqui entra cuando las cartas son iguales
+          //
+        } else {
+          //Aqui entra cuando las cartas no son iguales
+          //if (idCardOne != idCardTwo)
+          setTimeout(() => {
+            savePokemon.classList.toggle("is-flipped"),
+            savePokemon2.classList.toggle("is-flipped");
+          }, 1300);
+          contadorDeTarjetas = 0;
 
-    
+
+        }
       }
     }
-  } 
+  }
+  )
 }
-)}
 
 //La función toogle actúa como un interruptor, de manera que acepta dos parámetros, que serán dos funciones, una para cuando actives el interruptor y otra para cuando lo desactives
